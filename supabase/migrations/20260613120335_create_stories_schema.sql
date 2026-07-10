@@ -133,10 +133,10 @@ create index if not exists stories_source_work_ids_gin_idx
   on public.stories using gin (source_work_ids);
 
 create index if not exists stories_search_text_trgm_idx
-  on public.stories using gin (search_text gin_trgm_ops);
+  on public.stories using gin (search_text extensions.gin_trgm_ops);
 
 create index if not exists stories_search_reading_trgm_idx
-  on public.stories using gin (search_reading gin_trgm_ops);
+  on public.stories using gin (search_reading extensions.gin_trgm_ops);
 
 alter table public.stories enable row level security;
 

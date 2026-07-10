@@ -103,7 +103,7 @@ create index if not exists authors_tags_gin_idx
   on public.authors using gin (tags);
 
 create index if not exists authors_search_text_trgm_idx
-  on public.authors using gin (search_text gin_trgm_ops);
+  on public.authors using gin (search_text extensions.gin_trgm_ops);
 
 create index if not exists author_alias_links_author_id_2_idx
   on public.author_alias_links (author_id_2);

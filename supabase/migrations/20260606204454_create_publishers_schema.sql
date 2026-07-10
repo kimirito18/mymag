@@ -79,7 +79,7 @@ create index if not exists publishers_tags_gin_idx
   on public.publishers using gin (tags);
 
 create index if not exists publishers_search_text_trgm_idx
-  on public.publishers using gin (search_text gin_trgm_ops);
+  on public.publishers using gin (search_text extensions.gin_trgm_ops);
 
 alter table public.publishers enable row level security;
 

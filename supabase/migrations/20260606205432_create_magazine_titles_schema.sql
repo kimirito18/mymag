@@ -95,10 +95,10 @@ create index if not exists magazine_titles_title_variants_gin_idx
   on public.magazine_titles using gin (title_variants);
 
 create index if not exists magazine_titles_search_text_trgm_idx
-  on public.magazine_titles using gin (search_text gin_trgm_ops);
+  on public.magazine_titles using gin (search_text extensions.gin_trgm_ops);
 
 create index if not exists magazine_titles_search_reading_trgm_idx
-  on public.magazine_titles using gin (search_reading gin_trgm_ops);
+  on public.magazine_titles using gin (search_reading extensions.gin_trgm_ops);
 
 alter table public.magazine_titles enable row level security;
 

@@ -28,4 +28,4 @@ create index if not exists stories_title_reading_core_idx
   on public.stories (title_reading_core);
 
 create index if not exists stories_title_reading_core_trgm_idx
-  on public.stories using gin (title_reading_core gin_trgm_ops);
+  on public.stories using gin (title_reading_core extensions.gin_trgm_ops);

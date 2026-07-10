@@ -118,10 +118,10 @@ create index if not exists magazine_issues_contents_gin_idx
   on public.magazine_issues using gin (contents);
 
 create index if not exists magazine_issues_search_text_trgm_idx
-  on public.magazine_issues using gin (search_text gin_trgm_ops);
+  on public.magazine_issues using gin (search_text extensions.gin_trgm_ops);
 
 create index if not exists magazine_issues_search_reading_trgm_idx
-  on public.magazine_issues using gin (search_reading gin_trgm_ops);
+  on public.magazine_issues using gin (search_reading extensions.gin_trgm_ops);
 
 alter table public.magazine_issues enable row level security;
 
