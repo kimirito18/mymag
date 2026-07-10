@@ -1254,7 +1254,8 @@ order by
         });
     } catch (error) {
         return createRouteErrorResponse(error, "failed to load magazine issues", {
-            databaseMessage: "データベースに接続できないため雑誌個別データを読み込めません。"
+            databaseMessage: "データベースに接続できないため雑誌個別データを読み込めません。",
+            context: "GET /api/magazine-issues",
         });
     }
 }

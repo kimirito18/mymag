@@ -815,7 +815,8 @@ order by mt.title_reading, mt.title, mt.magazine_id;
         });
     } catch (error) {
         return createRouteErrorResponse(error, "failed to load magazine titles", {
-            databaseMessage: "データベースに接続できないため雑誌マスターを読み込めません。"
+            databaseMessage: "データベースに接続できないため雑誌マスターを読み込めません。",
+            context: "GET /api/magazine-titles",
         });
     }
 }

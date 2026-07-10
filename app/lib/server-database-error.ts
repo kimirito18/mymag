@@ -48,16 +48,28 @@ export const createRouteErrorResponse = (
   fallbackMessage: string,
   options?: {
     databaseMessage?: string;
+    context?: string;
   },
 ) => {
+  const contextLabel = options?.context?.trim() || "unknown-route";
+  const errorMessage = error instanceof Error ? error.message : String(error ?? fallbackMessage);
+  const errorCode =
+    error instanceof Error && "code" in error && typeof (error as NodeJS.ErrnoException).code === "string"
+      ? (error as NodeJS.ErrnoException).code
+      : "";
+
   // Server-side route policy mirrors the client:
   // - Database connectivity failures return 503 + db_unavailable so the
   //   client can switch to the dedicated full-screen route.
   // - Other failures remain ordinary 500 JSON responses and are rendered
   //   inline by the calling screen whenever possible.
   if (isDatabaseUnavailableError(error)) {
+    console.error(
+      `[db-unavailable] context=${contextLabel} code=${errorCode || "-"} message=${errorMessage}`,
+    );
     return createDatabaseUnavailableResponse(options?.databaseMessage);
   }
+  console.error(`[route-error] context=${contextLabel} code=${errorCode || "-"} message=${errorMessage}`);
   return NextResponse.json(
     {
       error: error instanceof Error ? error.message : fallbackMessage,
