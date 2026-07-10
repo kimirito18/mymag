@@ -1,0 +1,43 @@
+{
+  "name": "mymag",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "NEXT_DIST_DIR=.next-dev next dev",
+    "build": "NEXT_DIST_DIR=.next-build next build",
+    "start": "NEXT_DIST_DIR=.next-build next start",
+    "lint": "next lint",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:reset": "supabase db reset",
+    "supabase:status": "supabase status",
+    "db:authors:sql": "node scripts/create_author_import_sql.mjs",
+    "db:magazine-issues:sql": "node scripts/create_magazine_issue_import_sql.mjs",
+    "db:stories:sql": "node scripts/create_story_import_sql.mjs",
+    "db:stories:readings": "node scripts/generate_story_title_readings.mjs",
+    "db:publishers:sql": "node scripts/create_publisher_import_sql.mjs",
+    "db:magazines:sql": "node scripts/create_magazine_master_import_sql.mjs",
+    "db:design:audit": "node scripts/audit_database_design_alignment.mjs",
+    "db:design:audit:live": "node scripts/audit_database_design_alignment.mjs --live",
+    "db:backup:local": "node scripts/backup_local_postgres.mjs",
+    "local-runtime:uninstall": "scripts/uninstall_local_runtime.sh"
+  },
+  "dependencies": {
+    "fast-levenshtein": "^3.0.0",
+    "lucide-react": "^0.511.0",
+    "next": "15.5.18",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.24",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "supabase": "^2.105.0",
+    "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
+  }
+}

@@ -5,6 +5,8 @@
 現在は仕様設計とプロトタイプ準備段階です。実装方針とテーブル設計は以下にまとめています。
 
 - [Database Design](docs/database_design.md)
+- [Deployment Readiness](docs/deployment_readiness.md)
+- [Deploy Runbook](docs/deploy_runbook.md)
 
 ## Repository Policy
 

@@ -6,23 +6,38 @@
 # Dependencies and build output
 node_modules/
 .next/
+.next-dev/
+.next-dev.broken-*/
+.next-build/
 out/
 dist/
 build/
 .vercel/
 __pycache__/
 *.pyc
+*.tsbuildinfo
 
 # OS/editor files
 .DS_Store
 Thumbs.db
+.claude/
+.playwright-mcp/
+*.code-workspace
 
 # Source datasets and generated data
 metadata/
 converted/
 master_data/*.csv
+backups/
+supabase/.branches/
+supabase/.temp/
 
 # Logs and temporary files
 *.log
 tmp/
 temp/
+.tmp-*
+
+# Local review assets and ad hoc captures
+/*.png
+docs/*.ai
