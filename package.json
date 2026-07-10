@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "NEXT_DIST_DIR=.next-dev next dev",
     "build": "NEXT_DIST_DIR=.next-build next build",
+    "vercel-build": "next build",
     "start": "NEXT_DIST_DIR=.next-build next start",
     "lint": "next lint",
     "supabase:start": "supabase start",
