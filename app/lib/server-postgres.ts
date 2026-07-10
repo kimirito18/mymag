@@ -16,6 +16,7 @@ const user = process.env.PGUSER ?? "postgres";
 const database = process.env.PGDATABASE ?? "postgres";
 const password = process.env.PGPASSWORD ?? "postgres";
 const sslMode = (process.env.PGSSLMODE ?? "disable").trim().toLowerCase();
+const sslRejectUnauthorized = (process.env.PGSSLREJECTUNAUTHORIZED ?? "true").trim().toLowerCase() !== "false";
 
 const cstring = (value: string)=>Buffer.from(`${value}\0`);
 const int32 = (value: number)=>{
@@ -114,7 +115,8 @@ const openSocket = ()=>new Promise<net.Socket | tls.TLSSocket>((resolve, reject)
                 cleanup();
                 const secureSocket = tls.connect({
                     socket,
-                    servername: host
+                    servername: host,
+                    rejectUnauthorized: sslRejectUnauthorized,
                 }, ()=>{
                     secureSocket.off("error", onTlsError);
                     resolve(secureSocket);

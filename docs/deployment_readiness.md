@@ -17,7 +17,7 @@
 - アプリの DB 接続方式
   - 現行アプリは `app/lib/server-postgres.ts` で PostgreSQL に直接接続する
   - 接続先 DB は Supabase Postgres を想定する
-  - 実際に必要な環境変数は `PGHOST` `PGPORT` `PGUSER` `PGDATABASE` `PGPASSWORD` `PGSSLMODE`
+  - 実際に必要な環境変数は `PGHOST` `PGPORT` `PGUSER` `PGDATABASE` `PGPASSWORD` `PGSSLMODE` `PGSSLREJECTUNAUTHORIZED`
 - かな補完
   - `YAHOO_CLIENT_ID` が必要
   - `KANA_KURONEKO_API_URL` と `KANA_YAHOO_FURIGANA_API_URL` は必要に応じて上書き可能

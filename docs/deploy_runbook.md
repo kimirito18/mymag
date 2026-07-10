@@ -41,6 +41,7 @@ PGUSER=...
 PGDATABASE=...
 PGPASSWORD=...
 PGSSLMODE=require
+PGSSLREJECTUNAUTHORIZED=true
 YAHOO_CLIENT_ID=...
 KANA_KURONEKO_API_URL=https://eng-jpn-api.krnk.org/query
 KANA_YAHOO_FURIGANA_API_URL=https://jlp.yahooapis.jp/FuriganaService/V2/furigana
@@ -52,6 +53,7 @@ KANA_YAHOO_FURIGANA_API_URL=https://jlp.yahooapis.jp/FuriganaService/V2/furigana
 - DB 接続は `app/lib/server-postgres.ts` の `PG*` で行う
 - つまり、接続先は Supabase でも、アプリ側の接続方式は `supabase-js` ではなく PostgreSQL 直接接続
 - Supabase へつなぐときは `PGSSLMODE=require` を使う
+- `SELF_SIGNED_CERT_IN_CHAIN` が出る場合は `PGSSLREJECTUNAUTHORIZED=false` にして再デプロイする
 
 ## Supabase 値の対応表
 
@@ -65,6 +67,7 @@ Supabase ダッシュボードの `Connect` で表示される接続情報から
 | `PGDATABASE` | `Connect` の Database | `postgres` |
 | `PGPASSWORD` | project 作成時に決めた DB password | `********` |
 | `PGSSLMODE` | 固定 | `require` |
+| `PGSSLREJECTUNAUTHORIZED` | 通常は固定 | `true` |
 
 推奨:
 
