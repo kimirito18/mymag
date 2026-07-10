@@ -155,6 +155,8 @@ where id = ${sqlString(String(row.id))}::uuid;
     if (isDatabaseUnavailableError(error)) {
       return createDatabaseUnavailableResponse("データベースに接続できないためログインできません。");
     }
+    const errorMessage = error instanceof Error ? error.message : String(error ?? "unknown login error");
+    console.error(`[route-error] context=POST /api/auth/login message=${errorMessage}`);
     return NextResponse.json({
       error: isMissingColumnError(error, "login_password")
         ? "ログイン用の設定がまだ未反映です。旧方式での確認に切り替えます。"
